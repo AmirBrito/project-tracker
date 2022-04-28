@@ -9,15 +9,15 @@
           class="is-flex is-align-items-center is-justify-content-space-between"
         >
           <section>
-            <strong>00:00:00</strong>
+            <strong>{{ timeElapsed }}</strong>
           </section>
-          <button class="button">
+          <button class="button" @click="startCount">
             <span class="icon">
               <fa icon="play" />
             </span>
             <span>Play</span>
           </button>
-          <button class="button">
+          <button class="button" @click="finishCount">
             <span class="icon">
               <fa icon="stop" />
             </span>
@@ -34,6 +34,27 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "FormTracker",
+  data() {
+    return {
+      timeInSeconds: 0,
+    };
+  },
+  computed: {
+    timeElapsed(): string {
+      return new Date(this.timeInSeconds * 1000).toISOString().substr(11, 8);
+    },
+  },
+  methods: {
+    startCount() {
+      setInterval(() => {
+        this.timeInSeconds++;
+      }, 1000),
+        console.log("starting count!");
+    },
+    finishCount() {
+      console.log("finishing count!");
+    },
+  },
 });
 </script>
 
