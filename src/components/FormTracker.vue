@@ -37,6 +37,7 @@ export default defineComponent({
   data() {
     return {
       timeInSeconds: 0,
+      stopWatch: 0,
     };
   },
   computed: {
@@ -46,13 +47,12 @@ export default defineComponent({
   },
   methods: {
     startCount() {
-      setInterval(() => {
+      this.stopWatch = setInterval(() => {
         this.timeInSeconds++;
-      }, 1000),
-        console.log("starting count!");
+      }, 1000);
     },
     finishCount() {
-      console.log("finishing count!");
+      clearInterval(this.stopWatch);
     },
   },
 });
