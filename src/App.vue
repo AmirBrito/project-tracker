@@ -5,6 +5,7 @@
     </div>
     <div class="column is-three-quarter">
       <FormTracker />
+      <!-- Task List -->
     </div>
   </main>
 </template>
