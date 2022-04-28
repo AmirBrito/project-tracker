@@ -8,9 +8,7 @@
         <div
           class="is-flex is-align-items-center is-justify-content-space-between"
         >
-          <section>
-            <strong>{{ timeElapsed }}</strong>
-          </section>
+          <StopWatch :timeInSeconds="timeInSeconds" />
           <button class="button" @click="startCount">
             <span class="icon">
               <fa icon="play" />
@@ -31,19 +29,18 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import StopWatch from "./StopWatch.vue";
 
 export default defineComponent({
   name: "FormTracker",
+  components: {
+    StopWatch,
+  },
   data() {
     return {
       timeInSeconds: 0,
       stopWatch: 0,
     };
-  },
-  computed: {
-    timeElapsed(): string {
-      return new Date(this.timeInSeconds * 1000).toISOString().substr(11, 8);
-    },
   },
   methods: {
     startCount() {
