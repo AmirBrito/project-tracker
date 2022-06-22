@@ -22,6 +22,7 @@ import StopWatch from "./StopWatch.vue";
 
 export default defineComponent({
   name: "TimerTracker",
+  emits: ["timerTrackerFinished"],
   components: {
     StopWatch,
   },
@@ -42,6 +43,8 @@ export default defineComponent({
     finishCount() {
       this.runningWatch = false;
       clearInterval(this.stopWatch);
+      this.$emit("timerTrackerFinished", this.timeInSeconds);
+      this.timeInSeconds = 0;
     },
   },
 });
