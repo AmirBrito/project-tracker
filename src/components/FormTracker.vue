@@ -22,6 +22,7 @@ import TimerTracker from "./TimerTracker.vue";
 
 export default defineComponent({
   name: "FormTracker",
+  emits: ["onSaveTask"],
   components: {
     TimerTracker,
   },
@@ -32,8 +33,10 @@ export default defineComponent({
   },
   methods: {
     finishTask(timeElapsed: number): void {
-      console.log(timeElapsed);
-      console.log(this.description);
+      this.$emit("onSaveTask", {
+        durationInSeconds: timeElapsed,
+        description: this.description,
+      });
       this.description = "";
     },
   },
