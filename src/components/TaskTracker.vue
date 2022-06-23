@@ -1,23 +1,27 @@
 <template>
-  <div class="box has-text-weight-bold">
+  <BoxTracker>
     <div class="columns">
-      <div class="column is-7">{{ task.description }}</div>
+      <div class="column is-7">
+        {{ task.description || "Task default" }}
+      </div>
       <div class="column">
         <StopWatch :time-in-seconds="task.durationInSeconds" />
       </div>
     </div>
-  </div>
+  </BoxTracker>
 </template>
 
 <script lang="ts">
-import ITaskTracker from "../interfaces/ITaskTracker";
 import { defineComponent, PropType } from "vue";
 import StopWatch from "./StopWatch.vue";
+import ITaskTracker from "../interfaces/ITaskTracker";
+import BoxTracker from "./BoxTracker.vue";
 
 export default defineComponent({
   name: "TaskTracker",
   components: {
     StopWatch,
+    BoxTracker,
   },
   props: {
     task: {
@@ -28,8 +32,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.box {
-  background: #faf0ca;
-}
-</style>
+<style></style>
