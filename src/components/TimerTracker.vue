@@ -1,30 +1,32 @@
 <template>
   <div class="is-flex is-align-items-center is-justify-content-space-between">
     <StopWatch :timeInSeconds="timeInSeconds" />
-    <button class="button" @click="startCount" :disabled="runningWatch">
-      <span class="icon">
-        <fa icon="play" />
-      </span>
-      <span>Play</span>
-    </button>
-    <button class="button" @click="finishCount" :disabled="!runningWatch">
-      <span class="icon">
-        <fa icon="stop" />
-      </span>
-      <span>Stop</span>
-    </button>
+    <ButtonTracker
+      @clicked="startCount"
+      iconButton="play"
+      textButton="Play"
+      :disabled="runningWatch"
+    />
+    <ButtonTracker
+      @clicked="finishCount"
+      iconButton="stop"
+      textButton="Stop"
+      :disabled="!runningWatch"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import StopWatch from "./StopWatch.vue";
+import ButtonTracker from "./ButtonTracker.vue";
 
 export default defineComponent({
   name: "TimerTracker",
   emits: ["timerTrackerFinished"],
   components: {
     StopWatch,
+    ButtonTracker,
   },
   data() {
     return {
