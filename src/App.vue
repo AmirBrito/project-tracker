@@ -5,7 +5,11 @@
     </div>
     <div class="column is-three-quarter">
       <FormTracker />
-      <!-- Task List -->
+      <div class="taskList">
+        <TaskTracker />
+        <TaskTracker />
+        <TaskTracker />
+      </div>
     </div>
   </main>
 </template>
@@ -14,11 +18,16 @@
 import { defineComponent } from "vue";
 import SideBar from "./components/SideBar.vue";
 import FormTracker from "./components/FormTracker.vue";
+import TaskTracker from "./components/TaskTracker.vue";
 
 export default defineComponent({
   name: "App",
-  components: { SideBar, FormTracker },
+  components: { SideBar, FormTracker, TaskTracker },
 });
 </script>
 
-<style></style>
+<style>
+.taskList {
+  padding: 1.25rem;
+}
+</style>
