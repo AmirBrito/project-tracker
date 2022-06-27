@@ -1,6 +1,6 @@
 <template>
   <section>
-    <strong>{{ timeElapsed }}</strong>
+    <strong class="stop-watch-display">{{ timeElapsed }}</strong>
   </section>
 </template>
 
@@ -21,3 +21,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.stop-watch-display {
+  color: var(--primary-text);
+}
+</style>
