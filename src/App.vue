@@ -1,7 +1,10 @@
 <template>
-  <main class="columns is-gapless is-multiline dark-mode">
+  <main
+    class="columns is-gapless is-multiline"
+    :class="{ 'dark-mode': darkModeActivated }"
+  >
     <div class="column is-one-quarter">
-      <SideBar />
+      <SideBar @onChangeMode="changeTheme" />
     </div>
     <div class="column is-three-quarter main-content">
       <FormTracker @onSaveTask="saveTask" />
@@ -31,6 +34,7 @@ export default defineComponent({
   data() {
     return {
       taskList: [] as ITaskTracker[],
+      darkModeActivated: false,
     };
   },
   computed: {
@@ -41,6 +45,9 @@ export default defineComponent({
   methods: {
     saveTask(task: ITaskTracker) {
       this.taskList.push(task);
+    },
+    changeTheme(darkModeActivated: boolean) {
+      this.darkModeActivated = darkModeActivated;
     },
   },
 });
