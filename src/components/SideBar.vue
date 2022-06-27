@@ -21,9 +21,9 @@ export default defineComponent({
   computed: {
     darkModeButtonText() {
       if (this.darkModeActivated) {
-        return "Dark mode desactivated";
+        return "Dark mode OFF";
       }
-      return "Dark mode activated";
+      return "Dark mode ON";
     },
   },
   methods: {
